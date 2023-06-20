@@ -1,0 +1,12 @@
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[user]
+	name = Addison Goolsbee
+	email = addisongoolsbee@gmail.com
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
