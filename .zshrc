@@ -1,8 +1,13 @@
 alias zoo="ssh -i ~/.ssh/zoo awg32@cobra.zoo.cs.yale.edu"
 # alias ipython=IPython
 
+# General Shortcuts
+alias c.="cd .."
+alias ll="ls -alh"
+alias sl=ls
 alias zshrc="open ~/config-files/.zshrc"
 alias rzsh=". ~/config-files/.zshrc"
+alias python=python3
 
 killport() {
     kill -9 $(lsof -t -i:"$1")
@@ -29,7 +34,7 @@ alias glo='git log --oneline --decorate'
 alias gd='git diff'
 alias gm='git merge'
 
-# Heroku
+# Heroku Shortcuts
 alias gph='git push heroku & git push; wait'
 alias hl='heroku logs -t -n 1000'
 alias hls='heroku logs -t --source=app -n 1000'
@@ -39,41 +44,20 @@ function hcp {
 }
 
 
-
-
 # Terminal visuals
 PROMPT='%B%F{30}%n%f%b:%B%F{31}%1~%f%b%# '
-export LSCOLORS=ExcxcxdxCxegedabagacad
+export LSCOLORS=ExCxhxdxfxegedfhfgEcEd
 export CLICOLOR=1
 
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
 
-
 # Android Studio 
 export ANDROID_HOME=/Users/addisongoolsbee/Library/Android/sdk
 export PATH=$PATH:/ANDROID_HOME/platform-tools:\$PATH
 
-
-# umask 022
-
-# # >>> conda initialize >>>
-# # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/Users/addisongoolsbee/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/Users/addisongoolsbee/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-#         . "/Users/addisongoolsbee/opt/anaconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/Users/addisongoolsbee/opt/anaconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# # <<< conda initialize <<<
-
-
+# NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
