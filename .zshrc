@@ -32,6 +32,7 @@ alias gbd="git branch -d"
 alias gbD="git branch -D"
 alias grh="git reset --hard"
 alias gra="git remote add origin"
+alias grv="git remote -v"
 alias gp="git push"
 alias gpu="git push -u origin"
 alias glo='git log --oneline --decorate'
@@ -48,7 +49,6 @@ alias hpp='heroku pg:psql'
 function hcp {
     export "$1=$(heroku config:get $1)"
 }
-
 
 # Functions
 
@@ -83,7 +83,6 @@ grem() {
     gpu main
 }
 
-
 # Terminal visuals
 PROMPT='%B%F{30}%n%f%b:%B%F{31}%1~%f%b$ '
 export LSCOLORS=ExCxhxdxfxegedfhfgEcEd
@@ -93,22 +92,21 @@ export CLICOLOR=1
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/Library/Python/3.10/bin:$PATH"
 
-
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
 
-# Android Studio 
+# Android Studio
 export ANDROID_HOME=/Users/addisongoolsbee/Library/Android/sdk
 export PATH=$PATH:/ANDROID_HOME/platform-tools:
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/addisongoolsbee/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/addisongoolsbee/anaconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
@@ -120,4 +118,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
