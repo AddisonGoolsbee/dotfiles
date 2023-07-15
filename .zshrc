@@ -90,7 +90,7 @@ export CLICOLOR=1
 
 # Paths
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/Library/Python/3.10/bin:$PATH"
+export PATH="$HOME/Library/Python/3.11/bin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
