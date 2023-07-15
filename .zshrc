@@ -35,6 +35,7 @@ alias gra="git remote add origin"
 alias grv="git remote -v"
 alias gp="git push"
 alias gpu="git push -u origin"
+alias gpum="git push -u origin main"
 alias glo='git log --oneline --decorate'
 alias gd='git diff'
 alias gm='git merge'
