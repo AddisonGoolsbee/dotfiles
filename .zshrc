@@ -12,8 +12,8 @@ alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"
 alias hg="history | grep"
 
 # Dev Shortcuts
-alias dkup="docker-compose up app"
-alias dkrun="docker-compose run app bash"
+alias dkup="docker compose up backend"
+alias dkrun="docker compose run backend bash"
 alias ys="yarn start"
 
 # Git Shortcuts
