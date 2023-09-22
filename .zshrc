@@ -2,6 +2,7 @@
 SCRIPT_DIR=$(dirname $0)
 
 # General Shortcuts
+alias c-="cd -"
 alias c.="cd .."
 alias ll="ls -alh"
 alias sl=ls
@@ -15,7 +16,7 @@ alias zshr=". ${SCRIPT_DIR}/.zshrc"
 alias zoo="ssh -i ~/.ssh/zoo awg32@cobra.zoo.cs.yale.edu"
 alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"
 
-# Dev Shortcutszshg
+# Dev Shortcuts
 alias dkup="docker compose up backend"
 alias dkrun="docker compose run backend bash"
 alias ys="yarn start"
