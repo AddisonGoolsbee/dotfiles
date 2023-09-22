@@ -6,8 +6,11 @@ alias c.="cd .."
 alias ll="ls -alh"
 alias sl=ls
 alias dc=cd
+
 alias zshrc="open ~/.dotfiles/.zshrc"
-alias rzsh=". ~/.dotfiles/.zshrc"
+alias zshr=". ~/.dotfiles/.zshrc"
+
+
 alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"
 alias hg="history | grep"
 
@@ -85,6 +88,16 @@ gcp() {
 grem() {
     git remote add origin $1
     gpu main
+}
+
+zshg() {
+    if [[ -z "$1" ]]; then
+        echo "Enter a message"
+    elif [[ -n "$1" ]]; then
+        cd ~/.dotfiles
+        gcp $1
+        cd -
+    fi
 }
 
 # Terminal visuals
