@@ -113,8 +113,8 @@ export CLICOLOR=1
 # Paths
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/Library/Python/3.11/bin:$PATH"
-
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
 export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
 
 # Android Studio
@@ -126,8 +126,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
+
+# conda stuff
 __conda_setup="$('/Users/addisongoolsbee/anaconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
@@ -139,4 +139,3 @@ else
     fi
 fi
 unset __conda_setup
-# <<< conda initialize <<<
