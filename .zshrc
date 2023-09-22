@@ -26,6 +26,8 @@ alias gch="git checkout"
 alias gchb="git checkout -b"
 alias gchm="git checkout main"
 alias gs="git status"
+alias gst="git stash"
+alias gstp="git stash pop"
 alias gb="git branch"
 alias gbr='git branch -r'
 alias gbd="git branch -d"
@@ -47,6 +49,7 @@ alias gph='git push heroku & git push; wait'
 alias hl='heroku logs -t -n 1000'
 alias hls='heroku logs -t --source=app -n 1000'
 alias hpp='heroku pg:psql'
+alias hrb='heroku run bash'
 function hcp {
     export "$1=$(heroku config:get $1)"
 }
