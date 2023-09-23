@@ -22,7 +22,7 @@ alias dkrun="docker compose run backend bash"
 alias ys="yarn start"
 
 # Git Shortcuts
-alias glc="git clone"
+alias gcl="git clone"
 alias ga="git add"
 alias gc="git commit -m"
 alias gcS="git commit -amS"
