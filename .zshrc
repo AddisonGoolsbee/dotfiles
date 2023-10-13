@@ -52,6 +52,7 @@ alias gd='git diff'
 alias gm='git merge'
 alias gf='git fetch'
 alias gr="git rebase"
+alias ghi="gh repo create"
 
 # Heroku Shortcuts
 alias gph='git push heroku & git push; wait'
