@@ -7,6 +7,10 @@ alias c.="cd .."
 alias ll="ls -alh"
 alias sl=ls
 alias dc=cd
+alias cdes="cd ~/Desktop"
+alias cdoc="cd ~/Documents"
+alias cdow="cd ~/Downloads"
+alias cdh="cd ~"
 
 alias hg="history | grep"
 
