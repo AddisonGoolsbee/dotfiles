@@ -1,5 +1,5 @@
 # Variables
-SCRIPT_DIR=$(dirname $0)
+SCRIPT_DIR='/Users/addisongoolsbee'
 
 # General Shortcuts
 alias c-="cd -"
