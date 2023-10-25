@@ -12,8 +12,6 @@ alias cdoc="cd ~/Documents"
 alias cdow="cd ~/Downloads"
 alias cdh="cd ~"
 
-alias pip="pip3"
-
 alias hg="history | grep"
 
 alias zshrc="open ${SCRIPT_DIR}/.zshrc"
