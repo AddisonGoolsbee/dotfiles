@@ -102,6 +102,15 @@ grem() {
     gpu main
 }
 
+ghau() {
+    if [[ -z "$1" ]]; then
+        echo "Enter a user to add"
+    elif [[ -n "$1" ]]; then
+        REPOSITORY=$(gh repo view --json name -q .name)
+        gh api repos/addisongoolsbee/${REPOSITORY}/collaborators/${1} --method PUT 
+    fi        
+}
+
 zshg() {
     if [[ -z "$1" ]]; then
         echo "Enter a message"
