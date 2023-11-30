@@ -117,7 +117,7 @@ ghau() {
 }
 
 # Commits and pushes this file to GitHub
-zshg() {
+zshgcp() {
     if [[ -z "$1" ]]; then
         echo "Enter a message"
     elif [[ -n "$1" ]]; then
@@ -125,6 +125,12 @@ zshg() {
         gcp $1
         cd -
     fi
+}
+
+zshgl() {
+    cd ~/.dotfiles
+    gl
+    cd -
 }
 
 alias zshrg="zshr && zshg"
