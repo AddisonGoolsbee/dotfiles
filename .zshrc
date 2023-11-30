@@ -23,6 +23,7 @@ alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"
 # Dev Shortcuts
 alias dkup="docker compose up backend"
 alias dkrun="docker compose run backend bash"
+alias dkb="docker compose build"
 alias ys="yarn start"
 
 # Git Shortcuts
@@ -72,7 +73,7 @@ function hcp {
 
 # Functions
 
-# Kills the process running at port arg1
+# Kills the process running at port $1
 killport() {
     kill -9 $(lsof -t -i:"$1")
 }
@@ -103,15 +104,19 @@ grem() {
     gpu main
 }
 
+# Sends GitHub invite to user $1 for current repository
 ghau() {
     if [[ -z "$1" ]]; then
         echo "Enter a user to add"
     elif [[ -n "$1" ]]; then
         REPOSITORY=$(gh repo view --json name -q .name)
-        gh api repos/addisongoolsbee/${REPOSITORY}/collaborators/${1} --method PUT 
+        if gh api repos/addisongoolsbee/${REPOSITORY}/collaborators/${1} --method PUT > /dev/null; then
+            echo "Invite send to $1"
+        fi
     fi        
 }
 
+# Commits and pushes this file to GitHub
 zshg() {
     if [[ -z "$1" ]]; then
         echo "Enter a message"
@@ -121,6 +126,8 @@ zshg() {
         cd -
     fi
 }
+
+alias zshrg="zshr && zshg"
 
 # Terminal visuals
 PROMPT='%B%F{30}%n%f%b:%B%F{31}%1~%f%b$ '
