@@ -53,6 +53,7 @@ alias grso="git remote set-url origin"
 alias gp="git push"
 alias gpu="git push -u origin"
 alias gpum="git push -u origin main"
+alias gpd="git push origin --delete"
 alias glo='git log --oneline --decorate'
 alias gd='git diff'
 alias gm='git merge'
@@ -117,7 +118,7 @@ ghau() {
 }
 
 # Commits and pushes this file to GitHub
-zshgcp() {
+zshg() {
     if [[ -z "$1" ]]; then
         echo "Enter a message"
     elif [[ -n "$1" ]]; then
