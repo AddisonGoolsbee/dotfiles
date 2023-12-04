@@ -135,7 +135,7 @@ zshg() {
     elif [[ -n "$1" ]]; then
         cd ~/.dotfiles
         gcp $1
-        cd -
+        cd - > /dev/null
     fi
 }
 
