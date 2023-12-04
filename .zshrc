@@ -105,6 +105,17 @@ grem() {
     gpu main
 }
 
+gta() {
+    if [[ -z "$1" ]]; then
+        echo "Enter a tag name"
+    elif [[ -z "$2" ]]; then 
+        echo "Enter a tag description"
+    else
+        git tag -a $1 -m $2
+        git push origin $1
+    fi
+}
+
 # Sends GitHub invite to user $1 for current repository
 ghau() {
     if [[ -z "$1" ]]; then
