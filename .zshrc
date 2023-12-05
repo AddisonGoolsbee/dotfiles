@@ -13,6 +13,7 @@ alias cdow="cd ~/Downloads"
 alias cdh="cd ~"
 
 alias hg="history | grep"
+alias getip="ipconfig getifaddr en0 || ipconfig getifaddr en1"
 
 alias zshrc="open ${SCRIPT_DIR}/.zshrc"
 alias zshr=". ${SCRIPT_DIR}/.zshrc"
