@@ -15,6 +15,7 @@ alias cdh="cd ~"
 alias hg="history | grep"
 alias getip="ipconfig getifaddr en0 || ipconfig getifaddr en1"
 alias ipget=getip
+alias venva="source venv/bin/activate"
 
 alias zshrc="open ${SCRIPT_DIR}/.zshrc"
 alias zshr=". ${SCRIPT_DIR}/.zshrc"
@@ -130,6 +131,14 @@ ghau() {
     fi        
 }
 
+va() {
+    if [[ -z "$1" ]]; then
+        echo "Enter the venv name"
+    elif [[ -n "$1" ]]; then
+        source $1/bin/activate
+    fi 
+}
+
 # Commits and pushes this file to GitHub
 zshg() {
     if [[ -z "$1" ]]; then
@@ -183,3 +192,4 @@ else
     fi
 fi
 unset __conda_setup
+eval "$(rbenv init -)"
