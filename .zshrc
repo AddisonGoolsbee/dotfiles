@@ -7,10 +7,11 @@ alias c.="cd .."
 alias ll="ls -alh"
 alias sl=ls
 alias dc=cd
+alias cdh="cd ~"
 alias cdes="cd ~/Desktop"
 alias cdoc="cd ~/Documents"
 alias cdow="cd ~/Downloads"
-alias cdh="cd ~"
+alias cdcod="cd ~/Documents/coding"
 
 alias hg="history | grep"
 alias getip="ipconfig getifaddr en0 || ipconfig getifaddr en1"
