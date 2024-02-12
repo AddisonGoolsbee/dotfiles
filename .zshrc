@@ -21,7 +21,7 @@ alias venva="source venv/bin/activate"
 alias zshrc="open ${SCRIPT_DIR}/.zshrc"
 alias zshr=". ${SCRIPT_DIR}/.zshrc"
 
-alias zoo="ssh -i ~/.ssh/zoo awg32@cobra.zoo.cs.yale.edu"
+alias zoo="ssh -i ~/.ssh/zoo awg32@aphid.zoo.cs.yale.edu"
 alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"
 
 # Dev Shortcuts
@@ -55,7 +55,7 @@ alias grao="git remote add origin"
 alias grs="git remote set-url"
 alias grso="git remote set-url origin"
 alias gp="git push"
-alias gpu="git push -u origin"
+alias gpu="git push -u origin $(git rev-parse --abbrev-ref HEAD)"
 alias gpum="git push -u origin main"
 alias gpd="git push origin --delete"
 alias glo='git log --oneline --decorate'
@@ -87,9 +87,9 @@ killport() {
 gcm() {
     if [[ -z "$1" ]]; then
         echo "Enter a message"
-    elif [[ -n "$1" ]]; then
+    else
         git add .
-        git commit -m $1
+        git commit -m "$1"
     fi
 }
 
@@ -97,9 +97,9 @@ gcm() {
 gcp() {
     if [[ -z "$1" ]]; then
         echo "Enter a message"
-    elif [[ -n "$1" ]]; then
+    else
         git add .
-        git commit -m $1
+        git commit -m "$1"
         git push
     fi
 }
