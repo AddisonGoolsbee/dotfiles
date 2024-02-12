@@ -56,7 +56,6 @@ alias grs="git remote set-url"
 alias grso="git remote set-url origin"
 alias gp="git push"
 alias gpu="git push -u origin $(git rev-parse --abbrev-ref HEAD)"
-alias gpum="git push -u origin main"
 alias gpd="git push origin --delete"
 alias glo='git log --oneline --decorate'
 alias gd='git diff'
