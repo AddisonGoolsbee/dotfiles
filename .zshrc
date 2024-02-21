@@ -25,6 +25,8 @@ alias zoo="ssh -i ~/.ssh/zoo awg32@aphid.zoo.cs.yale.edu"
 alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"
 
 # Dev Shortcuts
+alias vc="python -m venv venv"
+
 alias dkup="docker compose up backend"
 alias dkrun="docker compose run backend bash"
 alias dkb="docker compose build"
@@ -111,7 +113,7 @@ grem() {
 gta() {
     if [[ -z "$1" ]]; then
         echo "Enter a tag name"
-    elif [[ -z "$2" ]]; then 
+    elif [[ -z "$2" ]]; then
         echo "Enter a tag description"
     else
         git tag -a $1 -m $2
@@ -125,10 +127,10 @@ ghau() {
         echo "Enter a user to add"
     elif [[ -n "$1" ]]; then
         REPOSITORY=$(gh repo view --json name -q .name)
-        if gh api repos/addisongoolsbee/${REPOSITORY}/collaborators/${1} --method PUT > /dev/null; then
+        if gh api repos/addisongoolsbee/${REPOSITORY}/collaborators/${1} --method PUT >/dev/null; then
             echo "Invite send to $1"
         fi
-    fi        
+    fi
 }
 
 va() {
@@ -136,7 +138,7 @@ va() {
         echo "Enter the venv name"
     elif [[ -n "$1" ]]; then
         source $1/bin/activate
-    fi 
+    fi
 }
 
 # Commits and pushes this file to GitHub
@@ -146,7 +148,7 @@ zshg() {
     elif [[ -n "$1" ]]; then
         cd ~/.dotfiles
         gcp $1
-        cd - > /dev/null
+        cd - >/dev/null
     fi
 }
 
@@ -178,7 +180,6 @@ export PATH=$PATH:/ANDROID_HOME/platform-tools:
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-
 
 # conda stuff
 __conda_setup="$('/Users/addisongoolsbee/anaconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
