@@ -26,7 +26,7 @@ alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"
 
 # Dev Shortcuts
 # va function below
-alias vc="python -m venv venv"
+alias pyvc="python -m venv venv"
 alias pfr="pip freeze > requirements.txt"
 alias pfi="pip install -r requirements.txt"
 alias pipi="pip install"
@@ -137,7 +137,7 @@ ghau() {
     fi
 }
 
-va() {
+pyva() {
     if [[ -z "$1" ]]; then
         echo "Enter the venv name"
     elif [[ -n "$1" ]]; then
