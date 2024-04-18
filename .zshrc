@@ -25,7 +25,11 @@ alias zoo="ssh -i ~/.ssh/zoo awg32@aphid.zoo.cs.yale.edu"
 alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"
 
 # Dev Shortcuts
+# va function below
 alias vc="python -m venv venv"
+alias pfr="pip freeze > requirements.txt"
+alias pfi="pip install -r requirements.txt"
+alias pipi="pip install"
 
 alias dkup="docker compose up backend"
 alias dkrun="docker compose run backend bash"
