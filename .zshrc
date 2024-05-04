@@ -57,7 +57,7 @@ alias zshr=". ${SCRIPT_DIR}/.zshrc"
 
 alias pyvc="python -m venv .venv"
 alias pfr="pip freeze > requirements.txt"
-alias pfi="pip install -r requirements.txt"
+alias pir="pip install -r requirements.txt"
 alias pipi="pip install"
 
 pyva() {
