@@ -133,7 +133,6 @@ gcm() {
     fi
 }
 
-
 gcp() {
     # add . and commit with message $1, then push
     if [[ -z "$1" ]]; then
@@ -190,7 +189,6 @@ function hcp {
     export "$1=$(heroku config:get $1)"
 }
 
-
 # ============================================
 #         Delayed Function Definitions
 # ============================================
@@ -209,11 +207,10 @@ zshgl() {
     echo "Pulling zshrc"
     cd ~/.dotfiles
     gl
-    cd - >> /dev/null
+    cd - >>/dev/null
 }
 
 alias zshrg="zshr && zshg"
-
 
 # ============================================
 #                   Other
@@ -259,8 +256,6 @@ else
     fi
 fi
 unset __conda_setup
-
-
 
 # ============================================
 #              Unsorted Additions
