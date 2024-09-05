@@ -19,6 +19,7 @@ alias cdow="cd ~/Downloads"
 alias cdcod="cd ~/Documents/coding"
 alias poop="echo 💩"
 alias deac="deactivate"
+alias rp="./prog"
 
 # --------------------------------------------
 
@@ -83,7 +84,16 @@ alias ys="yarn start"
 
 # DLang
 
-alias ldca="source ~/dlang/ldc-1.39.0/activate"
+alias dca="source ~/dlang/ldc-1.39.0/activate"
+
+# builds and runs a .d file
+dcb() {
+    if [[ -e "$1" ]]; then
+        echo "Enter a file"
+    else
+        ldc2 -of="prog" $1 && ./prog
+    fi
+}
 
 # --------------------------------------------
 
