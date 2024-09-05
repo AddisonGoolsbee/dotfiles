@@ -89,7 +89,7 @@ alias da="source ~/dlang/ldc-1.39.0/activate"
 # builds and runs a .d file
 d() {
     if [[ -e "$1" || -e "$1.d" ]]; then
-        ldc2 -of="prog" $1 && ./prog
+        dmd -of="prog" $1 && ./prog
     else
         echo "Error: no file found with the name $1"
     fi
