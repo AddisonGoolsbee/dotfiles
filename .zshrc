@@ -18,6 +18,7 @@ alias cdoc="cd ~/Documents"
 alias cdow="cd ~/Downloads"
 alias cdcod="cd ~/Documents/coding"
 alias poop="echo 💩"
+alias deac="deactivate"
 
 # --------------------------------------------
 
@@ -77,6 +78,12 @@ alias dkup="docker compose up backend"
 alias dkrun="docker compose run backend bash"
 alias dkb="docker compose build"
 alias ys="yarn start"
+
+# --------------------------------------------
+
+# DLang
+
+alias ldca="source ~/dlang/ldc-1.39.0/activate"
 
 # --------------------------------------------
 
