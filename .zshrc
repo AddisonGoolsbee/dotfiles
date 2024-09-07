@@ -84,12 +84,21 @@ alias ys="yarn start"
 
 # DLang
 
-alias da="source ~/dlang/ldc-1.39.0/activate"
+alias lda="source ~/dlang/ldc-1.39.0/activate"
 
-# builds and runs a .d file
-d() {
+# builds and runs a .d file with rdmd
+rd() {
     if [[ -e "$1" || -e "$1.d" ]]; then
         dmd -of="prog" $1 && ./prog
+    else
+        echo "Error: no file found with the name $1"
+    fi
+}
+
+# builds and runs a .d file with lldc
+ld() {
+    if [[ -e "$1" || -e "$1.d" ]]; then
+        ldc2 -of="prog" $1 && ./prog
     else
         echo "Error: no file found with the name $1"
     fi
