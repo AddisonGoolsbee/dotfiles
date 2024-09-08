@@ -104,6 +104,15 @@ ld() {
     fi
 }
 
+# builds and a .d file for debugging
+ldb() {
+    if [[ -e "$1" || -e "$1.d" ]]; then
+        ldc2 -of="prog" -g -gc $1
+    else
+        echo "Error: no file found with the name $1"
+    fi
+}
+
 # --------------------------------------------
 
 # Git
@@ -114,6 +123,7 @@ alias gc="git commit -m"
 alias gcS="git commit -amS"
 alias gca="git add . && git commit --amend --no-edit"
 alias gl="git pull"
+alias gf='git fetch'
 alias gfa="git fetch --all"
 alias gch="git checkout"
 alias gchb="git checkout -b"
@@ -135,10 +145,12 @@ alias gp="git push"
 alias gpu="git push -u origin $(git rev-parse --abbrev-ref HEAD)"
 alias gpd="git push origin --delete"
 alias glo='git log --pretty="%C(Yellow)%h  %C(reset)%ad (%C(Green)%cr%C(reset))%x09 %C(Cyan)%an: %C(reset)%s" --date=short'
+alias glon='glo -n'
 alias gd='git diff'
 alias gm='git merge'
-alias gf='git fetch'
-alias gr="git rebase"
+alias grb="git rebase"
+alias grba="git rebase --abort"
+alias grbc="git rebase --continue"
 alias gsa="git submodule add"
 alias ghi="gh repo create"
 
@@ -190,6 +202,15 @@ ghau() {
         if gh api repos/addisongoolsbee/${REPOSITORY}/collaborators/${1} --method PUT >/dev/null; then
             echo "Invite send to $1"
         fi
+    fi
+}
+
+grbi() {
+    # squash the last $1 commits together
+    if [[ -z "$1" ]]; then
+        echo "Enter the number of commits"
+    else
+        git rebase -i HEAD~$1
     fi
 }
 
