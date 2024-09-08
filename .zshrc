@@ -142,7 +142,6 @@ alias grao="git remote add origin"
 alias grs="git remote set-url"
 alias grso="git remote set-url origin"
 alias gp="git push"
-alias gpu="git push -u origin $(git rev-parse --abbrev-ref HEAD)"
 alias gpd="git push origin --delete"
 alias glo='git log --pretty="%C(Yellow)%h  %C(reset)%ad (%C(Green)%cr%C(reset))%x09 %C(Cyan)%an: %C(reset)%s" --date=short'
 alias glon='glo -n'
@@ -173,6 +172,10 @@ gcp() {
         git commit -m "$1"
         git push
     fi
+}
+
+gpu() {
+    git push -u origin $(git rev-parse --abbrev-ref HEAD)
 }
 
 grem() {
