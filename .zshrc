@@ -303,3 +303,18 @@ unset __conda_setup
 # ============================================
 #              Unsorted Additions
 # ============================================
+
+QEMU_ISO="vm/ubuntu.iso"
+QEMU_QCOW="vm/ubuntu.qcow2"
+QEMU_SHARE="./proj1"
+
+alias qcowsetup="qemu-img create -f qcow2 $QEMU_QCOW 80G"
+alias qmsetup="qemu-system-x86_64 -hda $QEMU_QCOW -boot c -m 4G -cdrom $QEMU_ISO"
+alias qmrsimple="qemu-system-x86_64 -hda $QEMU_QCOW -boot c -m 4G"
+alias qmr="qemu-system-x86_64 \
+    -hda $QEMU_QCOW \
+    -boot c -m 4G -smp 4 \
+    -virtfs local,path=$QEMU_SHARE,mount_tag=hostshare,security_model=mapped-xattr,id=hostsh \
+    -net user,hostfwd=tcp::2222-:22 -net nic \
+    -display none"
+alias qmsh="ssh addisongoolsbee@localhost -p 2222"
