@@ -34,6 +34,19 @@ killport() {
     kill -9 $(lsof -t -i:"$1")
 }
 
+sa() {
+    eval "alias a='$@'"
+}
+
+sb() {
+    eval "alias b='$@'"
+}
+
+sc() {
+    eval "alias c='$@'"
+}
+
+
 # --------------------------------------------
 
 # Package-Spefific
@@ -47,9 +60,26 @@ alias zoo="ssh -i ~/.ssh/zoo awg32@aphid.zoo.cs.yale.edu"
 
 alias zshrc="open ${SCRIPT_DIR}/.zshrc"
 alias zshr=". ${SCRIPT_DIR}/.zshrc"
-# zshg(message): commits zshrc and pushes to origin
-# zshgl(): pulls to zshrc
-# zshrg: runs zshr and zshg
+alias zsha="echo "\n'$@'" >> ~/.zshrc && zshr"
+
+zshg() {
+    if [[ -z "$1" ]]; then
+        echo "Enter a message"
+    elif [[ -n "$1" ]]; then
+        cd ~/.dotfiles
+        gcp $1
+        cd - >/dev/null
+    fi
+}
+
+zshgl() {
+    echo "Pulling zshrc"
+    cd ~/.dotfiles
+    gl
+    cd - >>/dev/null
+}
+
+alias zshrg="zshr && zshg"
 
 # ============================================
 #            Development Shortcuts
@@ -60,7 +90,7 @@ alias zshr=". ${SCRIPT_DIR}/.zshrc"
 alias pyvc="python -m venv .venv"
 alias pfr="pip freeze > requirements.txt"
 alias pir="pip install -r requirements.txt"
-alias pipi="pip install"
+alias pi="pip install"
 
 pyva() {
     # Activates the virtual environment with the name $1
@@ -120,9 +150,9 @@ ldb() {
 alias gcl="git clone"
 alias ga="git add"
 alias gc="git commit -m"
-alias gcS="git commit -amS"
-alias gca="git add . && git commit --amend --no-edit"
-alias gl="git pull"
+alias gca="git commit --amend"
+alias gcan="git commit -a --amend --no-edit"
+alias gl="git pull --ff-only || git pull"
 alias gf='git fetch'
 alias gfa="git fetch --all"
 alias gch="git checkout"
@@ -146,7 +176,7 @@ alias gpd="git push origin --delete"
 alias glo='git log --pretty="%C(Yellow)%h  %C(reset)%ad (%C(Green)%cr%C(reset))%x09 %C(Cyan)%an: %C(reset)%s" --date=short'
 alias glon='glo -n'
 alias gd='git diff'
-alias gm='git merge'
+alias gm='git merge --ff-only || git merge'
 alias grb="git rebase"
 alias grba="git rebase --abort"
 alias grbc="git rebase --continue"
@@ -233,29 +263,6 @@ function hcp {
 }
 
 # ============================================
-#         Delayed Function Definitions
-# ============================================
-
-zshg() {
-    if [[ -z "$1" ]]; then
-        echo "Enter a message"
-    elif [[ -n "$1" ]]; then
-        cd ~/.dotfiles
-        gcp $1
-        cd - >/dev/null
-    fi
-}
-
-zshgl() {
-    echo "Pulling zshrc"
-    cd ~/.dotfiles
-    gl
-    cd - >>/dev/null
-}
-
-alias zshrg="zshr && zshg"
-
-# ============================================
 #                   Other
 # ============================================
 
@@ -272,6 +279,7 @@ export CLICOLOR=1
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/Library/Python/3.11/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$(brew --prefix)/opt/socket_vmnet/bin:${PATH}"
 
 # --------------------------------------------
 
@@ -315,6 +323,85 @@ alias qmr="qemu-system-x86_64 \
     -hda $QEMU_QCOW \
     -boot c -m 4G -smp 4 \
     -virtfs local,path=$QEMU_SHARE,mount_tag=hostshare,security_model=mapped-xattr,id=hostsh \
-    -net user,hostfwd=tcp::2222-:22 -net nic \
-    -display none"
+    -net user,hostfwd=tcp::2222-:22 -net nic"
 alias qmsh="ssh addisongoolsbee@localhost -p 2222"
+
+alias qmsa="qemu-system-aarch64 \
+   -M virt,highmem=on \
+   -accel hvf \
+   -cpu host \
+   -smp 6 \
+   -m 12G \
+   -bios vm/QEMU_EFI.fd \
+   -device virtio-gpu-pci \
+   -display default,show-cursor=on \
+   -device qemu-xhci \
+   -device usb-ehci -device usb-kbd -device usb-mouse -usb \
+   -device usb-tablet \
+   -drive file=vm/ubuntu-arm.qcow2,format=qcow2,if=virtio,cache=writethrough \
+   -cdrom vm/ubuntu-arm.iso"
+
+alias qmra="sudo qemu-system-aarch64 \
+    -M virt,highmem=on \
+    -accel hvf \
+    -cpu host \
+    -smp 6 \
+    -m 12G \
+    -bios vm/QEMU_EFI.fd \
+    -device virtio-gpu-pci \
+    -display default,show-cursor=on \
+    -device qemu-xhci \
+    -device usb-ehci -device usb-kbd -device usb-mouse -usb \
+    -device usb-tablet \
+    -drive file=vm/ubuntu-arm.qcow2,format=qcow2,if=virtio,cache=writethrough \
+    -virtfs local,path=$QEMU_SHARE,mount_tag=hostshare,security_model=mapped-xattr,id=hostsh \
+    -netdev vmnet-shared,id=net0 \
+    -device virtio-net-pci,netdev=net0"
+
+Q_FSTAB="hostshare /home/addison/code 9p trans=virtio,version=9p2000.L,rw,uid=1000,gid=1000 0 0"
+
+alias t1='socket_vmnet_client "$(brew --prefix)/var/run/socket_vmnet" \
+    qemu-system-aarch64 \
+        -machine virt,accel=hvf \
+        -cpu host \
+        -smp 6 \
+        -m 8G \
+        -device virtio-net-pci,netdev=net0 -netdev socket,id=net0,fd=3 \
+        -drive if=virtio,format=qcow2,file=vm/target.qcow2 \
+        -cdrom vm/ubuntu-arm.iso> \
+        -nographic \
+        -bios vm/QEMU_EFI.fd'
+
+Q_ROOT="${HOME}/Desktop/System Design/"
+Q_BIOS="${Q_ROOT}vm/QEMU_EFI.fd"
+Q_DEV="${Q_ROOT}vm/dev.qcow2"
+Q_TARGET="${Q_ROOT}vm/target.qcow2"
+Q_ISO="${Q_ROOT}vm/ubuntu-arm.is"
+Q_SHARE="${Q_ROOT}proj1"
+
+alias qdev='socket_vmnet_client "$(brew --prefix)/var/run/socket_vmnet" \
+    qemu-system-aarch64 \
+        -machine virt,accel=hvf \
+        -cpu host \
+        -smp 6 \
+        -m 12G \
+        -device virtio-net-pci,netdev=net0 -netdev socket,id=net0,fd=3 \
+        -drive if=virtio,format=qcow2,file=${Q_DEV} \
+        -nographic \
+        -virtfs local,path=${Q_SHARE},mount_tag=hostshare,security_model=mapped-xattr,id=hostsh \
+        -bios ${Q_BIOS}'
+
+alias qtarget='qemu-system-aarch64 \
+        -machine virt,accel=hvf \
+        -cpu host \
+        -smp 6 \
+        -m 12G \
+        -drive if=virtio,format=qcow2,file=${Q_TARGET} \
+        -nographic \
+        -virtfs local,path=${Q_SHARE},mount_tag=hostshare,security_model=mapped-xattr,id=hostsh \
+        -bios ${Q_BIOS}'
+
+
+alias adev="ssh m1loser@172.29.80.69"
+alias atarget="ssh m1loser@172.29.80.146"
+
