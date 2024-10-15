@@ -152,7 +152,6 @@ alias ga="git add"
 alias gc="git commit -m"
 alias gca="git commit --amend"
 alias gcan="git commit -a --amend --no-edit"
-alias gl="git pull --ff-only || git pull"
 alias gf='git fetch'
 alias gfa="git fetch --all"
 alias gch="git checkout"
@@ -176,12 +175,27 @@ alias gpd="git push origin --delete"
 alias glo='git log --pretty="%C(Yellow)%h  %C(reset)%ad (%C(Green)%cr%C(reset))%x09 %C(Cyan)%an: %C(reset)%s" --date=short'
 alias glon='glo -n'
 alias gd='git diff'
-alias gm='git merge --ff-only || git merge'
 alias grb="git rebase"
 alias grba="git rebase --abort"
 alias grbc="git rebase --continue"
 alias gsa="git submodule add"
 alias ghi="gh repo create"
+
+gm() {
+    if [[ -z "$1" ]]; then
+        echo "Enter a branch to merge"
+    else
+        git merge --ff-only $1 || git merge $1
+    fi
+}
+
+gl() {
+    if [[ -z "$1" ]]; then
+        echo "Enter a branch to pull"
+    else
+        git pull --ff-only $1 || git pull $1
+    fi
+}
 
 gcm() {
     # add . and commit with message $1
@@ -377,7 +391,7 @@ Q_BIOS="${Q_ROOT}vm/QEMU_EFI.fd"
 Q_DEV="${Q_ROOT}vm/dev.qcow2"
 Q_TARGET="${Q_ROOT}vm/target.qcow2"
 Q_ISO="${Q_ROOT}vm/ubuntu-arm.is"
-Q_SHARE="${Q_ROOT}proj1"
+Q_SHARE="${Q_ROOT}proj2"
 
 alias qdev='socket_vmnet_client "$(brew --prefix)/var/run/socket_vmnet" \
     qemu-system-aarch64 \
@@ -397,9 +411,13 @@ alias qtarget='qemu-system-aarch64 \
         -smp 6 \
         -m 12G \
         -drive if=virtio,format=qcow2,file=${Q_TARGET} \
-        -nographic \
         -virtfs local,path=${Q_SHARE},mount_tag=hostshare,security_model=mapped-xattr,id=hostsh \
-        -bios ${Q_BIOS}'
+        -bios ${Q_BIOS} \
+        -device virtio-gpu-pci,edid=on,xres=1920,yres=1080 \
+        -display default,show-cursor=on \
+        -device qemu-xhci \
+        -device usb-kbd \
+        -device usb-mouse'
 
 
 alias adev="ssh m1loser@172.29.80.69"
