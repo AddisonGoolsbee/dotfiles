@@ -20,6 +20,7 @@ alias cdcod="cd ~/Documents/coding"
 alias poop="echo 💩"
 alias deac="deactivate"
 alias rp="./prog"
+alias t="tree -L 2"
 
 # --------------------------------------------
 
@@ -103,12 +104,12 @@ pyva() {
 
 # --------------------------------------------
 
-# Node
+# Javascript
 
-alias dkup="docker compose up backend"
-alias dkrun="docker compose run backend bash"
-alias dkb="docker compose build"
 alias ys="yarn start"
+alias nrd="npm run dev"
+alias nrb="npm run build"
+alias nrs="npm run start"
 
 # --------------------------------------------
 
@@ -145,6 +146,14 @@ ldb() {
 
 # --------------------------------------------
 
+# Docker
+
+alias dkup="docker compose up backend"
+alias dkrun="docker compose run backend bash"
+alias dkb="docker compose build"
+
+# --------------------------------------------
+
 # Git
 
 alias gcl="git clone"
@@ -165,6 +174,7 @@ alias gbr='git branch -r'
 alias gbd="git branch -d"
 alias gbD="git branch -D"
 alias grh="git reset --hard"
+alias grsh="git reset --soft HEAD~1"
 alias grv="git remote -v"
 alias gra="git remote add"
 alias grao="git remote add origin"
@@ -180,22 +190,27 @@ alias grba="git rebase --abort"
 alias grbc="git rebase --continue"
 alias gsa="git submodule add"
 alias ghi="gh repo create"
+alias gl="git pull"
+alias glf="git pull --ff-only"
+alias gm="git merge"
+alias gmf="git merge --ff-only"
 
-gm() {
-    if [[ -z "$1" ]]; then
-        echo "Enter a branch to merge"
-    else
-        git merge --ff-only $1 || git merge $1
-    fi
-}
 
-gl() {
-    if [[ -z "$1" ]]; then
-        echo "Enter a branch to pull"
-    else
-        git pull --ff-only $1 || git pull $1
-    fi
-}
+# gm() {
+#     if [[ -z "$1" ]]; then
+#         echo "Enter a branch to merge"
+#     else
+#         git merge --ff-only $1 || git merge $1
+#     fi
+# }
+
+# gl() {
+#     if [[ -z "$1" ]]; then
+#         echo "Enter a branch to pull"
+#     else
+#         git pull --ff-only $1 || git pull $1
+#     fi
+# }
 
 gcm() {
     # add . and commit with message $1
