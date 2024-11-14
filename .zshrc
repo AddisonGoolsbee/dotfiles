@@ -183,7 +183,6 @@ alias grso="git remote set-url origin"
 alias gp="git push"
 alias gpd="git push origin --delete"
 alias glo='git log --pretty="%C(Yellow)%h  %C(reset)%ad (%C(Green)%cr%C(reset))%x09 %C(Cyan)%an: %C(reset)%s" --date=short'
-alias glon='glo -n'
 alias gd='git diff'
 alias grb="git rebase"
 alias grba="git rebase --abort"
@@ -195,6 +194,13 @@ alias glf="git pull --ff-only"
 alias gm="git merge"
 alias gmf="git merge --ff-only"
 
+glon() {
+    if [[ -z "$1" ]]; then
+        glo -n 5
+    else
+        glo -n $1
+    fi
+}
 
 # gm() {
 #     if [[ -z "$1" ]]; then
