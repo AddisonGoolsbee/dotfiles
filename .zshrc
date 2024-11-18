@@ -96,7 +96,7 @@ alias pi="pip install"
 pyva() {
     # Activates the virtual environment with the name $1
     if [[ -z "$1" ]]; then
-        source venv/bin/activate
+        source .venv/bin/activate
     elif [[ -n "$1" ]]; then
         source $1/bin/activate
     fi
