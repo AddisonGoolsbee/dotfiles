@@ -446,7 +446,6 @@ alias adev="ssh m1loser@172.29.80.69"
 alias atarget="ssh m1loser@172.29.80.146"
 
 # https://stackoverflow.com/questions/14040351/filtering-zsh-history-by-command
-
 function percol_select_history() {
     local tac
     exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
@@ -458,5 +457,7 @@ function percol_select_history() {
 zle -N percol_select_history
 bindkey '^R' percol_select_history
 
-
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+function exists { which $1 &> /dev/null }
+
