@@ -92,6 +92,7 @@ alias pyvc="python -m venv .venv"
 alias pfr="pip freeze > requirements.txt"
 alias pir="pip install -r requirements.txt"
 alias pi="pip install"
+alias piu="pip uninstall"
 
 pyva() {
     # Activates the virtual environment with the name $1
