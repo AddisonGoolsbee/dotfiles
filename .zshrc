@@ -445,3 +445,4 @@ alias qtarget='qemu-system-aarch64 \
 alias adev="ssh m1loser@172.29.80.69"
 alias atarget="ssh m1loser@172.29.80.146"
 
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
