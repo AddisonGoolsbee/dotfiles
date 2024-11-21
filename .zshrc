@@ -175,6 +175,7 @@ alias gbr='git branch -r'
 alias gbd="git branch -d"
 alias gbD="git branch -D"
 alias grh="git reset --hard"
+alias grhh="git reset --hard HEAD~1"
 alias grsh="git reset --soft HEAD~1"
 alias grv="git remote -v"
 alias gra="git remote add"
