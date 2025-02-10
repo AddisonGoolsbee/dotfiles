@@ -328,8 +328,8 @@ export ANDROID_HOME=/Users/addisongoolsbee/Library/Android/sdk
 export PATH=$PATH:/ANDROID_HOME/platform-tools:
 # NVM
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 # Ruby
 eval "$(rbenv init -)"
 # Conda
@@ -344,6 +344,13 @@ else
     fi
 fi
 unset __conda_setup
+
+export PATH="/usr/local/bin:/opt/homebrew/opt/llvm/bin:$PATH"
+export CXX=/opt/homebrew/opt/llvm/bin/clang++
+export CC=/opt/homebrew/opt/llvm/bin/clang
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+export LIBOMP="/opt/homebrew/opt/libomp"
 
 # ============================================
 #              Unsorted Additions
@@ -462,3 +469,7 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 function exists { which $1 &> /dev/null }
 
+
+
+alias qqq="qemu-system-x86_64 -device e1000,netdev=network0,mac=52:54:00:d1:55:01 -netdev user,id=network0 -monitor stdio"
+alias ecl="ssh addison@ecl-comp-data.cs.yale.internal"
