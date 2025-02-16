@@ -195,6 +195,7 @@ alias gl="git pull"
 alias glf="git pull --ff-only"
 alias gm="git merge"
 alias gmf="git merge --ff-only"
+alias gbp="git fetch --prune && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs --no-run-if-empty git branch -D"
 
 glon() {
     if [[ -z "$1" ]]; then
@@ -346,6 +347,8 @@ fi
 unset __conda_setup
 
 export PATH="/usr/local/bin:/opt/homebrew/opt/llvm/bin:$PATH"
+export LLVM_LIB_DIR=$(llvm-config --libdir)
+
 export CXX=/opt/homebrew/opt/llvm/bin/clang++
 export CC=/opt/homebrew/opt/llvm/bin/clang
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
