@@ -88,7 +88,7 @@ alias zshrg="zshr && zshg"
 
 # Python
 
-alias pyvc="python -m venv .venv"
+alias pyvc="python -m venv .venv && source .venv/bin/activate"
 alias pfr="pip freeze > requirements.txt"
 alias pir="pip install -r requirements.txt"
 alias pi="pip install"
@@ -476,3 +476,5 @@ function exists { which $1 &> /dev/null }
 
 alias qqq="qemu-system-x86_64 -device e1000,netdev=network0,mac=52:54:00:d1:55:01 -netdev user,id=network0 -monitor stdio"
 alias ecl="ssh addison@ecl-comp-data.cs.yale.internal"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/llvm@14/bin:$PATH"
