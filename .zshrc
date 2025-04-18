@@ -20,10 +20,9 @@ alias cdcod="cd ~/Documents/coding"
 alias poop="echo 💩"
 alias deac="deactivate"
 alias rp="./prog"
-alias t="tree -L 2 -I 'node_modules|.git|dist|build|.cache'"
+# alias t="tree -L 2 -I 'target|dist|node_modules|.git|.venv|__pycache__'"
 
 # --------------------------------------------
-
 # Complex
 
 alias hg="history | grep"
@@ -47,6 +46,10 @@ sc() {
     eval "alias c='$@'"
 }
 
+t() {
+  local depth="${1:-2}"
+  tree -L "$depth" -I 'target|dist|node_modules|.git|.venv|__pycache__'
+}
 
 # --------------------------------------------
 
