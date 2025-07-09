@@ -48,7 +48,7 @@ sc() {
 
 t() {
   local depth="${1:-2}"
-  tree -L "$depth" -I 'target|dist|node_modules|.git|.venv|__pycache__'
+  tree -L "$depth" -I 'target|node_modules|.git|.venv|__pycache__'
 }
 
 # --------------------------------------------
@@ -64,7 +64,8 @@ alias zoo="ssh -i ~/.ssh/zoo awg32@aphid.zoo.cs.yale.edu"
 
 alias zshrc="open ${SCRIPT_DIR}/.zshrc"
 alias zshr=". ${SCRIPT_DIR}/.zshrc"
-alias zsha="echo "\n'$@'" >> ~/.zshrc && zshr"
+alias zsha='f() { printf "\n%s\n" "$*" >> ~/.zshrc && zshr; }; f'
+alias zshadd="zsha"
 
 zshg() {
     if [[ -z "$1" ]]; then
@@ -114,6 +115,9 @@ alias ys="yarn start"
 alias nrd="npm run dev"
 alias nrb="npm run build"
 alias nrs="npm run start"
+alias pnd="pnpm dev"
+alias pnb="pnpm build"
+alias pns="pnpm start"
 
 # --------------------------------------------
 
@@ -196,6 +200,7 @@ alias gsa="git submodule add"
 alias ghi="gh repo create"
 alias gl="git pull"
 alias glf="git pull --ff-only"
+alias glup="git pull upstream main && git push origin main"
 alias gm="git merge"
 alias gmf="git merge --ff-only"
 alias gbp="git fetch --prune && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs --no-run-if-empty git branch -D"
@@ -481,3 +486,5 @@ alias qqq="qemu-system-x86_64 -device e1000,netdev=network0,mac=52:54:00:d1:55:0
 alias ecl="ssh addison@ecl-comp-data.cs.yale.internal"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm@14/bin:$PATH"
+
+alias pm="python -m"
