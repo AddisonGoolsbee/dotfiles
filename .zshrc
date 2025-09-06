@@ -66,6 +66,15 @@ alias zshrc="open ${SCRIPT_DIR}/.zshrc"
 alias zshr=". ${SCRIPT_DIR}/.zshrc"
 alias zsha='f() { printf "\n%s\n" "$*" >> ~/.zshrc && zshr; }; f'
 alias zshadd="zsha"
+zshaa() {
+
+    local first=$1
+
+    shift
+
+    zsha "alias $first=\"$@\""
+
+}
 
 zshg() {
     if [[ -z "$1" ]]; then
@@ -488,3 +497,11 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm@14/bin:$PATH"
 
 alias pm="python -m"
+
+# pnpm
+export PNPM_HOME="/Users/addisongoolsbee/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
