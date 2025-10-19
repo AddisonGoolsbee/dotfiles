@@ -67,13 +67,9 @@ alias zshr=". ${SCRIPT_DIR}/.zshrc"
 alias zsha='f() { printf "\n%s\n" "$*" >> ~/.zshrc && zshr; }; f'
 alias zshadd="zsha"
 zshaa() {
-
     local first=$1
-
     shift
-
     zsha "alias $first=\"$@\""
-
 }
 
 zshg() {
@@ -505,3 +501,5 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+alias prd="pnpm run dev"
