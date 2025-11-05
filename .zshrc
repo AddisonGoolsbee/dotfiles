@@ -103,9 +103,9 @@ alias zshrg="zshr && zshg"
 
 alias pyvc="python -m venv .venv && source .venv/bin/activate"
 alias pfr="pip freeze > requirements.txt"
-alias pir="pip install -r requirements.txt"
-alias pi="pip install"
-alias piu="pip uninstall"
+alias pir="uv pip install -r requirements.txt"
+alias pi="uv add"
+alias piu="uv remove"
 
 pyva() {
     # Activates the virtual environment with the name $1
