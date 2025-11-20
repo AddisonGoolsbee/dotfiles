@@ -101,11 +101,14 @@ alias zshrg="zshr && zshg"
 
 # Python
 
-alias pyvc="python -m venv .venv && source .venv/bin/activate"
+alias pyvc="uv venv && source .venv/bin/activate"
 alias pfr="pip freeze > requirements.txt"
 alias pir="uv pip install -r requirements.txt"
 alias pi="uv add"
 alias piu="uv remove"
+alias pl="uv list"
+alias uvl="uv lock" # use these instead of requirements.txt
+alias uvs="uv sync" # ^
 
 pyva() {
     # Activates the virtual environment with the name $1
@@ -177,7 +180,7 @@ alias gcl="git clone"
 alias ga="git add"
 alias gc="git commit -m"
 alias gca="git commit --amend"
-alias gcan="git commit -a --amend --no-edit"
+alias gcan="git add -A && git commit --amend --no-edit"
 alias gf='git fetch'
 alias gfa="git fetch --all"
 alias gch="git checkout"
@@ -418,3 +421,5 @@ esac
 # pnpm end
 
 alias prd="pnpm run dev"
+
+alias co="codex"
